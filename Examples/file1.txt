@@ -1,0 +1,1 @@
+This is another text in file1.txt!

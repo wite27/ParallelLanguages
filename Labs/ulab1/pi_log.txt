@@ -1,0 +1,47 @@
+andrew@andrew-VirtualBox:~/Documents/ParalellLanguages/ulab1$ mpirun -np 4 ./pi
+Number of iterations=10
+Computed value of pi = 3.14243
+Iterations = 10, Number of processes = 4
+Elapsed time = 0.0134022
+andrew@andrew-VirtualBox:~/Documents/ParalellLanguages/ulab1$ mpirun -np 10 ./pi
+Number of iterations=100
+Computed value of pi = 3.1416
+Iterations = 100, Number of processes = 10
+Elapsed time = 0.0801926
+andrew@andrew-VirtualBox:~/Documents/ParalellLanguages/ulab1$ mpirun -np 10 ./pi
+Number of iterations=1000
+Computed value of pi = 3.14159
+Iterations = 1000, Number of processes = 10
+Elapsed time = 0.135237
+andrew@andrew-VirtualBox:~/Documents/ParalellLanguages/ulab1$ mpirun -np 8 ./pi
+Number of iterations=32
+Computed value of pi = 3.14167
+Iterations = 32, Number of processes = 8
+Elapsed time = 0.0872421
+andrew@andrew-VirtualBox:~/Documents/ParalellLanguages/ulab1$ mpirun -np 4 ./pi
+Number of iterations=32
+Computed value of pi = 3.14167
+Iterations = 32, Number of processes = 4
+Elapsed time = 0.024991
+andrew@andrew-VirtualBox:~/Documents/ParalellLanguages/ulab1$ mpirun -np 8 ./pi
+Number of iterations=256
+Computed value of pi = 3.14159
+Iterations = 256, Number of processes = 8
+Elapsed time = 0.14709
+andrew@andrew-VirtualBox:~/Documents/ParalellLanguages/ulab1$ mpirun -np 4 ./pi
+Number of iterations=256
+Computed value of pi = 3.14159
+Iterations = 256, Number of processes = 4
+Elapsed time = 0.0638461
+andrew@andrew-VirtualBox:~/Documents/ParalellLanguages/ulab1$ mpirun -np 2 ./pi
+Number of iterations=512
+Computed value of pi = 3.14159
+Iterations = 512, Number of processes = 2
+Elapsed time = 2.3365e-05
+andrew@andrew-VirtualBox:~/Documents/ParalellLanguages/ulab1$ mpirun -np 4 ./pi
+Number of iterations=512
+Computed value of pi = 3.14159
+Iterations = 512, Number of processes = 4
+Elapsed time = 0.0214429
+andrew@andrew-VirtualBox:~/Documents/ParalellLanguages/ulab1$ 
+
