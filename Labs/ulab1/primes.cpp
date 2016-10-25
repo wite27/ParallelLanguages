@@ -1,34 +1,54 @@
 #include <iostream>
 #include <mpi.h>
-#inclue <cmath>
+#include <cmath>
 #include <vector>
+#define MAXN 1000
 
 using namespace std;
 
 void constructBasePrimes(vector<int> *basePrimes)
 {
-	int n = basePrimes[0];
+	int n = (*basePrimes)[0];
 	int baseCount = floor(sqrt(n))+1;
 	
 	bool isPrime[baseCount];
+	for (int i = 0; i < baseCount; i++)
+	{
+		isPrime[i] = false;
+	}
 	isPrime[0] = false;
 	isPrime[1] = true;
 	if (2 > baseCount) return;
 	
-	for (int prime = 2; prime < baseCount && !basePrimes[prime]; prime++)
+	for (int prime = 2; prime < baseCount; prime++)
 	{
-		basePrimes.push_back(prime);
-		for (int current = prime; current < baseCount; current *= prime)
+		if (!isPrime[prime])
 		{
-			isPrime[current] = true;
+			(*basePrimes).push_back(prime);
+			for (int current = prime; current < baseCount; current += prime)
+			{
+				isPrime[current] = true;
+			}
 		}
 	}
 }
 
-int main (int argc, **argv)
+bool isPrime(int n, int* basePrimes, int baseCount)
 {
-	int myrank, nproc, number, baseCount;
-	int primesbuf[];
+	for (int i = 1; i < baseCount; i++)
+	{
+		if (n % (basePrimes[i]))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+int main (int argc, char **argv)
+{
+	int myrank, nproc, number, baseCount, partCount = 0, result;
+	double starttime;
+	int primesbuf[MAXN];
 	vector<int> basePrimes;
 	MPI_Init(&argc, &argv);
 	MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
@@ -40,9 +60,37 @@ int main (int argc, **argv)
 		starttime = MPI_Wtime();	
 		basePrimes.push_back(number);
 		constructBasePrimes(&basePrimes);
-		primesbuf = new int[basePrimes.size()];
+		baseCount = basePrimes.size();
 		copy(basePrimes.begin(), basePrimes.end(), primesbuf);
 	}
-	MPI_Bcast(&primesbuf, basePrimes.size(), MPI_INT, 0, MPI_COMM_WORLD);
-	
+	MPI_Bcast(&baseCount, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	MPI_Bcast(&primesbuf, MAXN, MPI_INT, 0, MPI_COMM_WORLD);
+	number = primesbuf[0];
+	//if (myrank == 0)
+	/*{
+		cout << "Proc " << myrank << ": 1 ";
+		for (int i = 1; i < baseCount; i++)
+		{
+			cout << primesbuf[i] << " ";
+		}
+		cout << endl;
+	}*/
+	if (myrank == 0)
+	{
+		partCount = baseCount - 1;
+	}
+	for (int i = baseCount+myrank; i < number; i += nproc)
+	{
+		if (isPrime(i, primesbuf, baseCount))
+		{
+			partCount++;
+		}
+	}
+	MPI_Reduce(&partCount, &result, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+	if (myrank == 0)
+	{
+		cout << result;
+	}
+	MPI_Finalize();
+	return 0;
 }
