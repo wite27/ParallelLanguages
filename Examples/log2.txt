@@ -1,3 +1,46 @@
+$ mpirun -np 3 ./ex9
+Process 0 recv 1 from process 1, 2.000000 from process 2
+
+
+$ mpirun -np 2 ./ex10
+latency = 0.000001 seconds
+8 bytes, bandwidth = 22.857143 Mb/s
+16 bytes, bandwidth = 55.652174 Mb/s
+32 bytes, bandwidth = 88.275862 Mb/s
+64 bytes, bandwidth = 222.608696 Mb/s
+128 bytes, bandwidth = 379.259259 Mb/s
+256 bytes, bandwidth = 731.428571 Mb/s
+512 bytes, bandwidth = 1280.000000 Mb/s
+1024 bytes, bandwidth = 2214.054054 Mb/s
+2048 bytes, bandwidth = 2409.411765 Mb/s
+4096 bytes, bandwidth = 3091.320755 Mb/s
+8192 bytes, bandwidth = 4458.231293 Mb/s
+16384 bytes, bandwidth = 4890.746269 Mb/s
+32768 bytes, bandwidth = 5295.838384 Mb/s
+65536 bytes, bandwidth = 4383.678930 Mb/s
+131072 bytes, bandwidth = 7281.777778 Mb/s
+262144 bytes, bandwidth = 7405.197740 Mb/s
+524288 bytes, bandwidth = 8689.256267 Mb/s
+1048576 bytes, bandwidth = 4129.877905 Mb/s
+2097152 bytes, bandwidth = 2177.388776 Mb/s
+4194304 bytes, bandwidth = 2554.795758 Mb/s
+max bandwidth = 8689.256267 Mb/s length = 524288 bytes
+
+$ mpirun -np 2 ./ex11
+process 0 prev = 1 next=1
+process 1 prev = 0 next=0
+
+$ mpirun -np 8 ./ex11
+process 6 prev = 5 next=7
+process 4 prev = 3 next=5
+process 5 prev = 4 next=6
+process 0 prev = 7 next=1
+process 7 prev = 6 next=0
+process 1 prev = 0 next=2
+process 3 prev = 2 next=4
+process 2 prev = 1 next=3
+
+
 $ mpirun -np 2 ./example17a
 model b[1]=1.000000
 rank=0 model time=0.000045
