@@ -2,7 +2,7 @@
 #include <mpi.h>
 #include <cmath>
 #include <vector>
-#define MAXN 1000
+#define MAXN 10000
 
 using namespace std;
 
@@ -37,7 +37,7 @@ bool isPrime(int n, int* basePrimes, int baseCount)
 {
 	for (int i = 1; i < baseCount; i++)
 	{
-		if (n % (basePrimes[i]))
+		if (n % (basePrimes[i]) == 0)
 		{
 			return false;
 		}
@@ -47,7 +47,7 @@ bool isPrime(int n, int* basePrimes, int baseCount)
 int main (int argc, char **argv)
 {
 	int myrank, nproc, number, baseCount, partCount = 0, result;
-	double starttime;
+	double starttime, endtime, time;
 	int primesbuf[MAXN];
 	vector<int> basePrimes;
 	MPI_Init(&argc, &argv);
@@ -81,15 +81,20 @@ int main (int argc, char **argv)
 	}
 	for (int i = baseCount+myrank; i < number; i += nproc)
 	{
+		//cout << "Processing " << i << endl;
 		if (isPrime(i, primesbuf, baseCount))
 		{
+			//cout << i << " is prime" << endl;
 			partCount++;
 		}
 	}
 	MPI_Reduce(&partCount, &result, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 	if (myrank == 0)
 	{
-		cout << result;
+		endtime = MPI_Wtime();
+		time = endtime - starttime;
+		cout << "Count of prime nubmers in {1.." << number << "} = " << result << endl;
+		cout << "Elapsed time = " << time << endl;
 	}
 	MPI_Finalize();
 	return 0;
