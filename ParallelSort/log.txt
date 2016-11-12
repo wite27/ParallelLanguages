@@ -1,0 +1,43 @@
+Complited in 0.000057 for 1024 elements on 1 processors.
+Complited in 0.000119 for 2048 elements on 1 processors.
+Complited in 0.000250 for 4096 elements on 1 processors.
+Complited in 0.000566 for 8192 elements on 1 processors.
+Complited in 0.001168 for 16384 elements on 1 processors.
+Complited in 0.002457 for 32768 elements on 1 processors.
+Complited in 0.005269 for 65536 elements on 1 processors.
+
+
+Complited in 0.000052 for 1024 elements on 2 processors.
+Complited in 0.000098 for 2048 elements on 2 processors.
+Complited in 0.000177 for 4096 elements on 2 processors.
+Complited in 0.000414 for 8192 elements on 2 processors.
+Complited in 0.000749 for 16384 elements on 2 processors.
+Complited in 0.001496 for 32768 elements on 2 processors.
+Complited in 0.003675 for 65536 elements on 2 processors.
+
+
+Complited in 0.046163 for 1024 elements on 4 processors.
+Complited in 0.027306 for 2048 elements on 4 processors.
+Complited in 0.052252 for 4096 elements on 4 processors.
+Complited in 0.054670 for 8192 elements on 4 processors.
+Complited in 0.079452 for 16384 elements on 4 processors.
+Complited in 0.051681 for 32768 elements on 4 processors.
+Complited in 0.098835 for 65536 elements on 4 processors.
+
+
+Complited in 0.272070 for 1024 elements on 8 processors.
+Complited in 0.461909 for 2048 elements on 8 processors.
+Complited in 0.462281 for 4096 elements on 8 processors.
+Complited in 0.241320 for 8192 elements on 8 processors.
+Complited in 0.472452 for 16384 elements on 8 processors.
+Complited in 0.316301 for 32768 elements on 8 processors.
+Complited in 0.171355 for 65536 elements on 8 processors.
+
+
+Complited in 1.287965 for 1024 elements on 16 processors.
+Complited in 1.287940 for 2048 elements on 16 processors.
+Complited in 1.045532 for 4096 elements on 16 processors.
+Complited in 1.012130 for 8192 elements on 16 processors.
+Complited in 1.213394 for 16384 elements on 16 processors.
+Complited in 1.531562 for 32768 elements on 16 processors.
+Complited in 1.561967 for 65536 elements on 16 processors.
